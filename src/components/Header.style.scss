@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    border-bottom: 1px solid silver;
+
+    .logo {
+        font-family: "Lobster", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        
+    }
+
+    .logo-red {
+        color: #FF7426;
+    }
+
+    ul {
+        display: flex;
+        
+    }
+
+    .header-nav {
+        gap: 60px;
+
+        a {
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+    .header-social {
+        gap: 40px;
+        ul {
+            
+            
+            li {           
+            width: 10px;
+            height: 20px;
+        }
+        }
+        
+
+        
+    }
+
+    a {
+            display: block;
+            padding: 3px 0;
+            transition: color 0.3s ease;
+            position: relative;
+            transition: all 600ms ease;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                width: 0;
+                height: 3px;
+                background-color: #000;        // чёрная полоска
+                transition: width 0.4s ease;
+                border-radius: 2px;
+            }
+
+            &:hover {
+               
+                transition: all 600ms ease;
+                transform: scale(1.1);
+                color: #000;
+
+                &::after {
+                    width: 100%;               // растягивается на всю ширину
+                }
+            }
+    }
+
+    
+
+}
