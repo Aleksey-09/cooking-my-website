@@ -21,7 +21,7 @@ export default function Hero() {
                  </div>
                  <div className='hero-left-com'>
                     <div className='hero-left-coment'>
-                        <img className='hero-left-com-img' src='src/assets/icon-com-hero.svg'>
+                        <img className='hero-left-com-img' src='/src/assets/icon-com-hero.svg'>
 
                         </img>
                         <div className='hero-left-com-text'>
