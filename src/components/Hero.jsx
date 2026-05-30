@@ -7,7 +7,7 @@ export default function Hero() {
         <div className='hero'>
             
             <div className="hero-left">
-                <img className='hero-badge' src="src/assets/hero-Badge.svg" alt="" />
+                <img className='hero-badge' src="/assets/hero-Badge.svg" alt="" />
                 <div className="hero-left-logo"> 
                     <img src="/src/assets/hero-left-logo.svg" alt="" /> 
                     <p>Hot Recipes</p>
@@ -21,7 +21,7 @@ export default function Hero() {
                  </div>
                  <div className='hero-left-com'>
                     <div className='hero-left-coment'>
-                        <img className='hero-left-com-img' src='/src/assets/icon-com-hero.svg'>
+                        <img className='hero-left-com-img' src='/assets/icon-com-hero.svg'>
 
                         </img>
                         <div className='hero-left-com-text'>
