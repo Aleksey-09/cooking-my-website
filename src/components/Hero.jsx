@@ -9,7 +9,7 @@ export default function Hero() {
             <div className="hero-left">
                 <img className='hero-badge' src="/assets/hero-Badge.svg" alt="" />
                 <div className="hero-left-logo"> 
-                    <img src="/src/assets/hero-left-logo.svg" alt="" /> 
+                    <img src="/assets/hero-left-logo.svg" alt="" /> 
                     <p>Hot Recipes</p>
                 </div>
                 <h1>Spicy delicious <br /> chicken wings</h1>
