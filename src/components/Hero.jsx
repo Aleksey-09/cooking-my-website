@@ -7,10 +7,11 @@ import './Hero.style.scss';
 
 export default function Hero() {
     const [recipes, setRecipes] = useState([]);
+    const [images, setImages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(true);
-    const [heroImage, setHeroImage] = useState('');
 
+    // Загружаем рецепты
     useEffect(() => {
         const fetchRandomRecipes = async () => {
             try {
@@ -26,17 +27,21 @@ export default function Hero() {
         fetchRandomRecipes();
     }, []);
 
+    // Загружаем ВСЕ картинки сразу после загрузки рецептов
     useEffect(() => {
         if (recipes.length === 0) return;
 
-        const loadImage = async () => {
-            const img = await getfoodImage(recipes[currentIndex].title);
-            setHeroImage(img);
+        const loadAllImages = async () => {
+            const imgs = await Promise.all(
+                recipes.map(r => getfoodImage(r.title))
+            );
+            setImages(imgs);
         };
 
-        loadImage();
-    }, [currentIndex, recipes]);
+        loadAllImages();
+    }, [recipes]);
 
+    // Автосмена каждые 8 секунд
     useEffect(() => {
         if (recipes.length === 0) return;
 
@@ -52,6 +57,7 @@ export default function Hero() {
     }
 
     const current = recipes[currentIndex];
+    const heroImage = images[currentIndex] || current.image || '';
 
     return (
         <section
