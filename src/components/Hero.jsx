@@ -1,41 +1,91 @@
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faUtensils, faPlay } from '@fortawesome/free-solid-svg-icons';
-import './Hero.style.scss'
+import { faClock, faUtensils, faHeart, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { spoonacularApi } from '../services/spoonacular';
+import { getfoodImage } from '../services/pexels';
+import './Hero.style.scss';
 
 export default function Hero() {
-    return(
-        <div className='hero'>
-            
-            <div className="hero-left">
-                <img className='hero-badge' src="/assets/hero-Badge.svg" alt="" />
-                <div className="hero-left-logo"> 
-                    <img src="/assets/hero-left-logo.svg" alt="" /> 
-                    <p>Hot Recipes</p>
+    const [recipes, setRecipes] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [loading, setLoading] = useState(true);
+    const [heroImage, setHeroImage] = useState('');
+
+    useEffect(() => {
+        const fetchRandomRecipes = async () => {
+            try {
+                const data = await spoonacularApi.getRandomRecipes(10);
+                setRecipes(data.recipes || []);
+            } catch (error) {
+                console.error("Ошибка загрузки:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchRandomRecipes();
+    }, []);
+
+    useEffect(() => {
+        if (recipes.length === 0) return;
+
+        const loadImage = async () => {
+            const img = await getfoodImage(recipes[currentIndex].title);
+            setHeroImage(img);
+        };
+
+        loadImage();
+    }, [currentIndex, recipes]);
+
+    useEffect(() => {
+        if (recipes.length === 0) return;
+
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % recipes.length);
+        }, 8000);
+
+        return () => clearInterval(interval);
+    }, [recipes.length]);
+
+    if (loading || recipes.length === 0) {
+        return <div className="hero-loading">Loading delicious recipes...</div>;
+    }
+
+    const current = recipes[currentIndex];
+
+    return (
+        <section
+            className="hero"
+            style={{ backgroundImage: heroImage ? `url(${heroImage})` : 'none' }}
+        >
+            <div className="hero-overlay"></div>
+
+            <div className="hero-content">
+                <div className="hero-badge">Hot Recipe</div>
+
+                <h1>{current.title}</h1>
+
+                <p
+                    className="hero-description"
+                    dangerouslySetInnerHTML={{
+                        __html: current.summary ? current.summary.slice(0, 160) + '...' : ''
+                    }}
+                />
+
+                <div className="hero-meta">
+                    <div><FontAwesomeIcon icon={faClock} /> {current.readyInMinutes} Minutes</div>
+                    <div><FontAwesomeIcon icon={faUtensils} /> {current.servings} Servings</div>
                 </div>
-                <h1>Spicy delicious <br /> chicken wings</h1>
-                <p>Crispy chicken wings coated in a bold, spicy marinade with garlic, paprika, and a hint of smokiness. <br />
-                 Perfect for game nights, parties, or whenever you crave something hot and flavorful.</p>
-                 <div className="hero-left-times">
-                    <div><FontAwesomeIcon icon={faClock} /> 30 Minutes</div>
-                    <div><FontAwesomeIcon icon={faUtensils} />Chicken</div>
-                 </div>
-                 <div className='hero-left-com'>
-                    <div className='hero-left-coment'>
-                        <img className='hero-left-com-img' src='/assets/icon-com-hero.svg'>
 
-                        </img>
-                        <div className='hero-left-com-text'>
-                            <h4>John Smith</h4>
-                            <p>15 March 2022</p>
-                        </div>
-                    </div>
-                    <button>View Recipes <span><FontAwesomeIcon icon={faPlay} /></span></button>
-                 </div>
+                <div className="hero-buttons">
+                    <button className="btn-view">
+                        <FontAwesomeIcon icon={faPlay} /> View Recipe
+                    </button>
+                    <button className="btn-favorite">
+                        <FontAwesomeIcon icon={faHeart} />
+                    </button>
+                </div>
             </div>
-
-            <div className="hero-right">
-
-            </div>
-        </div>
-    )
+        </section>
+    );
 }
