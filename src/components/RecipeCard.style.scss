@@ -1,0 +1,21 @@
+.recipe-card {
+    background: #E7F9FD;
+    padding: 16px;
+
+    .card-img {
+        
+        margin-bottom: 24px;
+        img {
+            width: 100%;
+            border-radius: 30px;
+            
+        }
+    }
+}
+
+.recipe-meta {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 24px;
+}

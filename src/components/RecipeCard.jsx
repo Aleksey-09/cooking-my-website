@@ -1,22 +1,30 @@
-import { Link } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faUtensils, faPlay } from '@fortawesome/free-solid-svg-icons';
-
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock, faUtensils, faHeart } from '@fortawesome/free-solid-svg-icons'
+import './RecipeCard.style.scss'
 
 export default function RecipeCard({ recipe }) {
+    const [liked, setLiked] = useState(false)
+
     return( 
-        <Link  className="recipe-card">
+        <div className="recipe-card">
             <div className="card-img">
-                <img src={recipe.img} alt="" />
-                <img src={recipe.like} alt="" />
+                <img src={recipe.image} alt={recipe.title} />
+                <button 
+                    className={`like-btn ${liked ? 'active' : ''}`}
+                    onClick={() => setLiked(!liked)}
+                >
+                    <FontAwesomeIcon icon={faHeart} />
+                </button>
             </div>
-            <div className="recipe-info">
+            <Link to={`/recipe/${recipe.id}`} className="recipe-info">
                 <h3>{recipe.title}</h3>
                 <div className="recipe-meta">
-                    <div><FontAwesomeIcon icon={faClock} /> 30 Minutes</div>
-                    <div><FontAwesomeIcon icon={faUtensils} />Chicken</div>
+                    <div><FontAwesomeIcon icon={faClock} /> {recipe.readyInMinutes} Min</div>
+                    <div><FontAwesomeIcon icon={faUtensils} /> {recipe.servings} Servings</div>
                 </div>
-            </div>
-        </Link>
+            </Link>
+        </div>
     )
 }

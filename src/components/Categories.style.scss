@@ -1,5 +1,5 @@
 .categories {
-    padding: 60px 8%;
+    padding: 60px 0;
 }
 
 .categories-header {
@@ -34,6 +34,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    
 }
 
 .categories-card {

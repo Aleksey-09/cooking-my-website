@@ -8,7 +8,7 @@ export default function Header() {
         <header>
             <Link className="logo">Foodieland<span className="logo-red">.</span></Link>
             <ul className="header-nav">
-                <li><Link>Home</Link></li>
+                <li><Link to='/'>Home</Link></li>
                 <li><Link>Recipes</Link></li>
                 <li><Link>Blog</Link></li>
                 <li><Link>Contact</Link></li>

@@ -10,6 +10,14 @@ export const spoonacularApi = {
         return res.json();
     },
 
+    searchRecipes: async (query, number = 12) => {
+        const res = await fetch(
+            `${BASE_URL}/recipes/complexSearch?query=${query}&number=${number}&addRecipeInformation=true&apiKey=${API_KEY}`
+        )
+        if (!res.ok) throw new Error('Failed to fetch');
+        return res.json();
+    },
+
     getRecipeById: async (id) => {
         const res = await fetch(
             `${BASE_URL}/recipes/${id}/information?apiKey=${API_KEY}`
