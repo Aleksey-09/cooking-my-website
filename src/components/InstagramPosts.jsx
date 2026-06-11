@@ -12,16 +12,16 @@ export default function InstagramPosts() {
             </div>
             <div className="inst-cards">
                 <div className="inst-card">
-                    <img src="public/assets/instPost/1.svg" alt="" />
+                    <img src="/assets/instPost/1.svg" alt="" />
                 </div>
                 <div className="inst-card">
-                    <img src="public/assets/instPost/2.svg" alt="" />
+                    <img src="/assets/instPost/2.svg" alt="" />
                 </div>
                 <div className="inst-card">
-                    <img src="public/assets/instPost/3.svg" alt="" />
+                    <img src="/assets/instPost/3.svg" alt="" />
                 </div>
                 <div className="inst-card">
-                    <img src="public/assets/instPost/4.svg" alt="" />
+                    <img src="/assets/instPost/4.svg" alt="" />
                 </div>
             </div>
             <button>Visit Our Instagram <FontAwesomeIcon icon={faInstagram} /></button>
