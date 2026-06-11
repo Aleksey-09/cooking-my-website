@@ -1,0 +1,91 @@
+
+footer {
+    margin-top: 60px;
+}
+
+.footer-top {
+    p {
+        margin-top: 20px;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+
+    .logo {
+        font-family: "Lobster", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        
+    }
+
+    .logo-red {
+        color: #FF7426;
+    }
+
+    .footer-nav {
+        ul {
+            display: flex;
+            gap: 60px;
+        }
+
+        a {
+            display: block;
+            padding: 3px 0;
+            transition: color 0.3s ease;
+            position: relative;
+            transition: all 600ms ease;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                width: 0;
+                height: 3px;
+                background-color: #000;        // чёрная полоска
+                transition: width 0.4s ease;
+                border-radius: 2px;
+            }
+
+            &:hover {
+               
+                transition: all 600ms ease;
+                transform: scale(1.1);
+                color: #000;
+
+                &::after {
+                    width: 100%;               // растягивается на всю ширину
+                }
+            }
+    }
+
+    }
+}
+
+.footer-botom {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@media(max-width: 768px) {
+    .footer-top {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+}
+
+@media(max-width: 425px) {
+    .footer-nav {
+        ul {
+            display: flex;
+            flex-direction: column;
+            
+        }
+    }
+}

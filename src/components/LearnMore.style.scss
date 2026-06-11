@@ -1,0 +1,57 @@
+.learn {
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    align-items: center;
+}
+
+.learn-left {
+    width: 50%;
+
+    h1 {
+        font-weight: 600;
+        font-size: 48px;
+        margin-bottom: 24px;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 16px;
+        margin-bottom: 72px;
+        line-height: 28px;
+    }
+
+    button {
+        background: transparent;
+        border: 2px solid #333;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: #333;
+            color: white;
+        }
+    }
+}
+
+.learn-right {
+    width: 50%;
+
+    img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .learn-right {
+        display: none;
+    }
+
+    .learn-left {
+        width: 100%;
+    }
+}

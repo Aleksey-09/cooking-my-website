@@ -6,7 +6,7 @@ import './Header.style.scss'
 export default function Header() {
     return(
         <header>
-            <Link className="logo">Foodieland<span className="logo-red">.</span></Link>
+            <Link to="/" className="logo">Foodieland<span className="logo-red">.</span></Link>
             <ul className="header-nav">
                 <li><Link to='/'>Home</Link></li>
                 <li><Link>Recipes</Link></li>

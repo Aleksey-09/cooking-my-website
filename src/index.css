@@ -25,6 +25,51 @@ body {
 
 }
 
+.deliciousness {
+  text-align: center;
+  align-items: center;
+  background-image: url(/public/assets/Mask\ Group.svg);
+  padding: 80px 0;
+  background-size: cover !important;;
+  background-position: center !important;;
+  background-repeat: no-repeat !important;;
+  margin-bottom: 120px;
+  border-radius: 60px;
+  
+}
+
+.deliciousness h1 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.deliciousness p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 64px;
+}
+
+.deliciousness-mail {
+  position: relative;
+  display: inline-block; /* чтобы обёртка не растягивалась на всю ширину */
+}
+
+.deliciousness-mail input {
+  max-width: 450px;
+  border-radius: 24px;
+  padding: 18px 150px 18px 24px; /* правый padding под кнопку */
+  box-sizing: border-box;
+}
+
+.deliciousness-mail button {
+  position: absolute;
+  right: 6px;
+  top: -58%;
+  transform: translateY(-50%);
+}
+
 @media (max-width: 1024px) {
           .hero-badge {
         
@@ -74,6 +119,13 @@ body {
       padding: 0;
     }
 
+    .categories-cards {
+      display: flex !important;;
+      flex-wrap: wrap !important;;
+    }
+
+   
+
     
     
 }
@@ -110,4 +162,20 @@ body {
       }
     
   }
+}
+
+@media(max-width: 375px) {
+  .categories-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .deliciousness-mail input {
+  max-width: 450px;
+  border-radius: 24px;
+  padding: 18px 100px 18px 24px; /* правый padding под кнопку */
+  box-sizing: border-box;
+}
 }
