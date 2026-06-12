@@ -20,9 +20,17 @@ export const spoonacularApi = {
 
     getRecipeById: async (id) => {
         const res = await fetch(
-            `${BASE_URL}/recipes/${id}/information?apiKey=${API_KEY}`
+            `${BASE_URL}/recipes/${id}/information?includeNutrition=true&apiKey=${API_KEY}`
         );
         if (!res.ok) throw new Error('Failed to fetch');
         return res.json();
-    }
+    },
+
+        getSimilarRecipes: async (id) => {
+            const res = await fetch(
+                `${BASE_URL}/recipes/${id}/similar?number=4&apiKey=${API_KEY}`
+            )
+            if (!res.ok) throw new Error('Failed to fetch');
+        return res.json();
+        }
 };

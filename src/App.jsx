@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Header from './components/Header'
 import CategoryPage from './pages/CategoryPage'
-
+import Footer from '../components/Footer'
 
 function App() {
   
@@ -20,6 +20,7 @@ function App() {
               <Route path="/category/:query" element={<CategoryPage />}/>
             </Routes>
           </main>
+          <Footer />
       </div>
      </BrowserRouter>
     </>
