@@ -10,8 +10,20 @@ export default function Recipe() {
     useEffect(() => {
         const fetchRecipes = async () => {
             try {
+                // Проверяем кэш
+                const cached = localStorage.getItem('randomRecipes')
+                if (cached) {
+                    setRecipes(JSON.parse(cached))
+                    setLoading(false)
+                    return // выходим, запрос не делаем
+                }
+
+                // Кэша нет — делаем запрос
                 const data = await spoonacularApi.getRandomRecipes(9)
                 setRecipes(data.recipes || [])
+
+                // Сохраняем в кэш
+                localStorage.setItem('randomRecipes', JSON.stringify(data.recipes))
             } catch (error) {
                 console.error('Ошибка:', error)
             } finally {
@@ -19,7 +31,7 @@ export default function Recipe() {
             }
         }
         fetchRecipes()
-    }, []) // [] — запускаем только один раз при загрузке
+    }, [])
 
     return(
         <section className='recipe'>
@@ -27,7 +39,6 @@ export default function Recipe() {
             <p>We've curated the finest simple recipes for you — fast to make, consistently delicious, and filling
                 your home with comfort and irresistible aromas.
             </p>
-
             {loading ? (
                 <div className="recipe-loading">Loading recipes...</div>
             ) : (
