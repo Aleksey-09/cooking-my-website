@@ -10,7 +10,7 @@ export default function LearnMore() {
                 <button>Learn More</button>
             </div>
             <div className="learn-right">
-                <img src="/public/assets/learn-more.svg" alt="" />
+                <img src="/assets/learn-more.svg" alt="" />
             </div>
         </section>
     )
